@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <!-- <style>
+        h3 a:hover {
+            color: rgb(255, 0, 0);
+        }
+    </style> -->
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+    <main>
+        <h2>All Posts</h2>
+        
+            <button type="submit" style=" height: 40px; width: 15%; font-size: 1.2em; margin-left: 43%;"  ><a href="/new" style="text-decoration: none; color: white;">Create Post </a> </button>
+        <% if (posts.length > 0) { %>
+            <ul>
+                <% posts.forEach(post => { %>
+                    <li>
+                        <h3> <a href="/view" style="text-decoration: none; color: white;" ><%= post.title %> </a> </h3>
+                        <p><%= post.content %></p>   <br>
+                        <button style="display:inline; background-color: white; color: black; " ><a href="/edit/<%= post.id %>" style="text-decoration: none;">Edit</a></button>   &nbsp;
+
+                            <form action="/delete/<%= post.id %>" method="POST" style="display:inline;">
+                                <button type="submit">Delete</button>
+
+                            </form>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No posts yet. <a href="/new" style="color: white;">Create one!</a></p>
+        <% } %>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Blog</p>
+    </footer>
+</body>
+</html>

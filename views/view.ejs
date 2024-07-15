@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+    <main>
+        <% if (posts.length > 0) { %>
+            <ul>
+                <% posts.forEach(post => { %>
+                    <li>
+                        <h3><%= post.title %>  </h3>
+                        <p><%= post.content %></p>   <br>
+                        <button style="display:inline; background-color: white; color: black; " ><a href="/edit/<%= post.id %>" style="text-decoration: none;">Edit</a></button>   &nbsp;
+                        </form>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No posts yet. <a href="/new">Create one!</a></p>
+        <% } %>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Blog</p>
+    </footer>
+</body>
+</html>
+
+
